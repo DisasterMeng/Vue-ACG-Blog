@@ -1,25 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import nprogress from 'nprogress'
+
+nprogress.configure({ showSpinner: false })
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import('./components/home/index.vue'),
+      children: []
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  nprogress.configure({ trickle: true, minimum: 0.08 })
+  nprogress.set(0)
+  next()
+})
+
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
+  nprogress.done()
+})
+
+export default router
