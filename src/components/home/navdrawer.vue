@@ -75,55 +75,55 @@ export default {
 
 <style scoped lang='stylus'>
 .m-author
-  width: 100%
-  height: auto
-  text-align: center
-  padding: 30px 0 20px 0
+  width 100%
+  height auto
+  text-align center
+  padding 30px 0 20px 0
 
 .m-author img
-  width: 120px
-  height: 120px
-  min-width: 120px
-  border-radius: 100%
+  width 120px
+  height 120px
+  min-width 120px
+  border-radius 100%
 
 .m-name
-  width: 100%
-  text-align: center
+  width 100%
+  text-align center
 
 .m-name p
-  font-weight: bold
-  letter-spacing: 1.5px
+  font-weight bold
+  letter-spacing 1.5px
 
 .m-share
-  margin-top: 24px
+  margin-top 24px
 
 .m-share p
-  padding-left: 20px
-  text-align: center
-  letter-spacing: 20px
+  padding-left 20px
+  text-align center
+  letter-spacing 20px
 
 .m-share p a:nth-child(1)
-  color: #00aced
+  color #00aced
 
 .m-share p a:nth-child(2)
-  color: #000
+  color #000
 
 .m-share p a:nth-child(3)
-  color: #ffbf00
+  color #ffbf00
 
 .m-share p a:nth-child(4)
-  color: #3A99CE
+  color #3A99CE
 
 .m-search
-  width: 100%
-  height: auto
-  padding: 10px 30px
+  width 100%
+  height auto
+  padding 10px 30px
 
 .list__tile
-  padding: 0 32px !important
+  padding 0 32px !important
 
 .m-footer
-  font-size: 14px
-  color: #b9b9b9
-  text-align: center
+  font-size 14px
+  color #b9b9b9
+  text-align center
 </style>

@@ -47,132 +47,135 @@ export default {
 
 <style scoped lang='stylus'>
 .upyun
-  color: #6C5B7C
+  color #6C5B7C
 
 .footer-center
-  text-align: center
+  background-color #FFFFFF
+  text-align center
+  position relative
 
 .footer-center p
-  font-size: 15px
-  color: #6C5B7C
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1)
+  margin-bottom 5px
+  font-size 15px
+  color #6C5B7C
+  text-shadow 0 0 1px rgba(0, 0, 0, 0.1)
 
 .footer-center p:last-child a:hover
-  color: #00A0FF
+  color #00A0FF
 
 .snow
-  margin: 0 auto
-  width: 30px
-  height: 30px
-  background: url(./../../assets/imgs/snow.svg) no-repeat
-  animation: csnow 12s infinite linear
+  margin 0 auto
+  width 30px
+  height 30px
+  background url(./../../assets/imgs/snow.svg) no-repeat
+  animation csnow 12s infinite linear
 
 .my-presence
-  animation: presence 5s infinite ease-in-out
-  display: inline-block
-  white-space: nowrap
+  animation presence 5s infinite ease-in-out
+  display inline-block
+  white-space nowrap
 
 @keyframes csnow
   0%
-    transform: rotate(0deg)
+    transform rotate(0deg)
   100%
-    transform: rotate(360deg)
+    transform rotate(360deg)
 
 @keyframes presence
   2%, 24%, 80%
-    -webkit-transform: translate(0, 1.5px) rotate(1.5deg)
-    transform: translate(0, 1.5px) rotate(1.5deg)
+    -webkit-transform translate(0, 1.5px) rotate(1.5deg)
+    transform translate(0, 1.5px) rotate(1.5deg)
 
   4%, 68%, 98%
-    -webkit-transform: translate(0, -1.5px) rotate(-0.5deg)
-    transform: translate(0, -1.5px) rotate(-0.5deg)
+    -webkit-transform translate(0, -1.5px) rotate(-0.5deg)
+    transform translate(0, -1.5px) rotate(-0.5deg)
 
   38%, 6%
-    -webkit-transform: translate(0, 1.5px) rotate(-1.5deg)
-    transform: translate(0, 1.5px) rotate(-1.5deg)
+    -webkit-transform translate(0, 1.5px) rotate(-1.5deg)
+    transform translate(0, 1.5px) rotate(-1.5deg)
 
   8%, 86%
-    -webkit-transform: translate(0, -1.5px) rotate(-1.5deg)
-    transform: translate(0, -1.5px) rotate(-1.5deg)
+    -webkit-transform translate(0, -1.5px) rotate(-1.5deg)
+    transform translate(0, -1.5px) rotate(-1.5deg)
 
   10%, 72%
-    -webkit-transform: translate(0, 2.5px) rotate(1.5deg)
-    transform: translate(0, 2.5px) rotate(1.5deg)
+    -webkit-transform translate(0, 2.5px) rotate(1.5deg)
+    transform translate(0, 2.5px) rotate(1.5deg)
 
   12%, 64%, 78%, 96%
-    -webkit-transform: translate(0, -0.5px) rotate(1.5deg)
-    transform: translate(0, -0.5px) rotate(1.5deg)
+    -webkit-transform translate(0, -0.5px) rotate(1.5deg)
+    transform translate(0, -0.5px) rotate(1.5deg)
 
   14%, 54%
-    -webkit-transform: translate(0, -1.5px) rotate(1.5deg)
-    transform: translate(0, -1.5px) rotate(1.5deg)
+    -webkit-transform translate(0, -1.5px) rotate(1.5deg)
+    transform translate(0, -1.5px) rotate(1.5deg)
 
   16%
-    -webkit-transform: translate(0, -0.5px) rotate(-1.5deg)
-    transform: translate(0, -0.5px) rotate(-1.5deg)
+    -webkit-transform translate(0, -0.5px) rotate(-1.5deg)
+    transform translate(0, -0.5px) rotate(-1.5deg)
 
   18%, 22%
-    -webkit-transform: translate(0, 0.5px) rotate(-1.5deg)
-    transform: translate(0, 0.5px) rotate(-1.5deg)
+    -webkit-transform translate(0, 0.5px) rotate(-1.5deg)
+    transform translate(0, 0.5px) rotate(-1.5deg)
 
   20%, 36%, 46%
-    -webkit-transform: translate(0, -1.5px) rotate(2.5deg)
-    transform: translate(0, -1.5px) rotate(2.5deg)
+    -webkit-transform translate(0, -1.5px) rotate(2.5deg)
+    transform translate(0, -1.5px) rotate(2.5deg)
 
   26%, 50%
-    -webkit-transform: translate(0, 0.5px) rotate(0.5deg)
-    transform: translate(0, 0.5px) rotate(0.5deg)
+    -webkit-transform translate(0, 0.5px) rotate(0.5deg)
+    transform translate(0, 0.5px) rotate(0.5deg)
 
   28%
-    -webkit-transform: translate(0, 0.5px) rotate(1.5deg)
-    transform: translate(0, 0.5px) rotate(1.5deg)
+    -webkit-transform translate(0, 0.5px) rotate(1.5deg)
+    transform translate(0, 0.5px) rotate(1.5deg)
 
   30%, 40%, 62%, 76%, 88%
-    -webkit-transform: translate(0, -0.5px) rotate(2.5deg)
-    transform: translate(0, -0.5px) rotate(2.5deg)
+    -webkit-transform translate(0, -0.5px) rotate(2.5deg)
+    transform translate(0, -0.5px) rotate(2.5deg)
 
   32%, 34%, 66%
-    -webkit-transform: translate(0, 1.5px) rotate(-0.5deg)
-    transform: translate(0, 1.5px) rotate(-0.5deg)
+    -webkit-transform translate(0, 1.5px) rotate(-0.5deg)
+    transform translate(0, 1.5px) rotate(-0.5deg)
 
   42%
-    -webkit-transform: translate(0, 2.5px) rotate(-1.5deg)
-    transform: translate(0, 2.5px) rotate(-1.5deg)
+    -webkit-transform translate(0, 2.5px) rotate(-1.5deg)
+    transform translate(0, 2.5px) rotate(-1.5deg)
 
   44%, 70%
-    -webkit-transform: translate(0, 1.5px) rotate(0.5deg)
-    transform: translate(0, 1.5px) rotate(0.5deg)
+    -webkit-transform translate(0, 1.5px) rotate(0.5deg)
+    transform translate(0, 1.5px) rotate(0.5deg)
 
   48%, 74%, 82%
-    -webkit-transform: translate(0, -0.5px) rotate(0.5deg)
-    transform: translate(0, -0.5px) rotate(0.5deg)
+    -webkit-transform translate(0, -0.5px) rotate(0.5deg)
+    transform translate(0, -0.5px) rotate(0.5deg)
 
   52%, 56%, 60%
-    -webkit-transform: translate(0, 2.5px) rotate(2.5deg)
-    transform: translate(0, 2.5px) rotate(2.5deg)
+    -webkit-transform translate(0, 2.5px) rotate(2.5deg)
+    transform translate(0, 2.5px) rotate(2.5deg)
 
   58%
-    -webkit-transform: translate(0, 0.5px) rotate(2.5deg)
-    transform: translate(0, 0.5px) rotate(2.5deg)
+    -webkit-transform translate(0, 0.5px) rotate(2.5deg)
+    transform translate(0, 0.5px) rotate(2.5deg)
 
   84%
-    -webkit-transform: translate(0, 1.5px) rotate(2.5deg)
-    transform: translate(0, 1.5px) rotate(2.5deg)
+    -webkit-transform translate(0, 1.5px) rotate(2.5deg)
+    transform translate(0, 1.5px) rotate(2.5deg)
 
   90%
-    -webkit-transform: translate(0, 2.5px) rotate(-0.5deg)
-    transform: translate(0, 2.5px) rotate(-0.5deg)
+    -webkit-transform translate(0, 2.5px) rotate(-0.5deg)
+    transform translate(0, 2.5px) rotate(-0.5deg)
 
   92%
-    -webkit-transform: translate(0, 0.5px) rotate(-0.5deg)
-    transform: translate(0, 0.5px) rotate(-0.5deg)
+    -webkit-transform translate(0, 0.5px) rotate(-0.5deg)
+    transform translate(0, 0.5px) rotate(-0.5deg)
 
   94%
-    -webkit-transform: translate(0, 2.5px) rotate(0.5deg)
-    transform: translate(0, 2.5px) rotate(0.5deg)
+    -webkit-transform translate(0, 2.5px) rotate(0.5deg)
+    transform translate(0, 2.5px) rotate(0.5deg)
 
   0%, 100%
-    -webkit-transform: translate(0, 0) rotate(0)
-    transform: translate(0, 0) rotate(0)
+    -webkit-transform translate(0, 0) rotate(0)
+    transform translate(0, 0) rotate(0)
 
 </style>

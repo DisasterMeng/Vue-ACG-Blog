@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "highlight.js": "^9.13.1",
-    "live2d-vue": "^0.1.6",
+    "live2d-vue": "^0.1.7",
     "material-design-icons-iconfont": "^4.0.3",
     "moment": "^2.23.0",
     "nprogress": "^0.2.0",

@@ -4155,9 +4155,9 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-live2d-vue@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.npmjs.org/live2d-vue/-/live2d-vue-0.1.6.tgz#7967251feedd6fa2a866440ea9e9d0b8f74fcab2"
+live2d-vue@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.npmjs.org/live2d-vue/-/live2d-vue-0.1.7.tgz#661989fcb7a565668c17c9fa1a0ae00bdbc97033"
   dependencies:
     pug "^2.0.3"
     pug-plain-loader "^1.0.0"

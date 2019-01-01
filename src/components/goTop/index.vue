@@ -15,7 +15,6 @@ export default {
   }),
   mounted () {
     this.$nextTick(() => {
-      nprogress.configure({ trickle: false, minimum: 0 })
       this.listener = window.addEventListener('scroll', this.setScroll)
     })
   },
@@ -58,40 +57,40 @@ export default {
 
 <style scoped lang='stylus'>
 .scroll-image
-  position: fixed
-  top: -900px
-  right: 25px
-  height: 900px
-  width: 70px
-  cursor: pointer
-  background: url('./../../assets/imgs/scroll.png') no-repeat center
-  background-size: contain
-  transition: all .5s ease-in-out
-  animation: bounce 2s linear infinite
+  position fixed
+  top -900px
+  right 25px
+  height 900px
+  width 70px
+  cursor pointer
+  background url('./../../assets/imgs/scroll.png') no-repeat center
+  background-size contain
+  transition all .5s ease-in-out
+  animation bounce 2s linear infinite
 
 .mbScroll-image
-  position: fixed
-  bottom: -100px
-  right: 0px
-  width: 48px
-  height: 48px
-  background: url('./../../assets/imgs/goTop.png') no-repeat center
-  background-size: contain
-  transition: all .5s ease-in-out
-  display: none
+  position fixed
+  bottom -100px
+  right 0px
+  width 48px
+  height 48px
+  background url('./../../assets/imgs/goTop.png') no-repeat center
+  background-size contain
+  transition all .5s ease-in-out
+  display none
 
 @keyframes bounce
   0%
-    transform: translateY(0)
+    transform translateY(0)
   50%
-    transform: translateY(-6px)
+    transform translateY(-6px)
   100%
-    transform: translateY(0)
+    transform translateY(0)
 
 @media screen and (max-width:960px)
   .scroll-image
-    display: none
+    display none
 
   .mbScroll-image
-    display: inline
+    display inline
 </style>
