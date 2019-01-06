@@ -9,50 +9,46 @@
                 div.explore
                     h1
                         i.fa.fa-envira.explore-icon &nbsp;explore
-                    blogItem(v-for="(item,index) in getBlogData" :key="index" :blog='item' :Index='index')
+                    blogItem(v-for="(item,index) in blogData" :key="index" :blog='item' :Index='index')
+                    div#pagination(v-if="next" @click="lower")
+                      span lower
 </template>
 
 <script>
 import myheader from './header'
 import blogItem from './blogItem'
+import { fetchBlogsApi } from '@/api/index'
 
 export default {
   name: 'content-home',
   data: () => ({
-    getBlogData: [{
-      id: 1,
-      title: '这个是blog标题',
-      time: '2017-09-08',
-      img: require(`./../../assets/imgs/comic/002.png`),
-      excerpt: '这个是blog简介',
-      user: {
-        username: '凌寒初见',
-        icon: require('@/assets/imgs/author.png')
-      },
-      category: {
-        name: '类别'
-      },
-      commentNum: 55,
-      num: 22
-    },
-    {
-      id: 2,
-      title: '这个是blog标题2',
-      excerpt: '这个是blog简介2',
-      time: '2018-09-08',
-      img: require(`./../../assets/imgs/comic/005.png`),
-      user: {
-        username: '凌寒初见',
-        icon: require('@/assets/imgs/author.png')
-      },
-      category: {
-        name: '类别'
-      },
-      commentNum: 25,
-      num: 33
-    }],
-    notice: '这是通知'
+    blogData: [],
+    next: '',
+    notice: '项目已经开源,欢迎下载试玩'
   }),
+  methods: {
+    fetchBlogs (page = 1) {
+      fetchBlogsApi({ page }).then(res => {
+        this.next = res.data.next
+        for (let i = 0, len = res.data.results.length; i < len; i++) {
+          this.blogData.push(res.data.results[i])
+        }
+      })
+    },
+    lower () {
+      if (this.next) {
+        let url = new URL(this.next)
+        let page = url.search.match(/page=(\d+)/)
+        if (page && page.length > 0) {
+          page = page[1]
+          this.fetchBlogs(page)
+        }
+      }
+    }
+  },
+  created () {
+    this.fetchBlogs()
+  },
   components: {
     myheader,
     blogItem
@@ -89,4 +85,21 @@ export default {
   color #6c5b7c
   text-transform capitalize
   padding-left 5px
+
+#pagination
+  margin-top 50px
+  text-align center
+
+#pagination span
+  padding 10px 30px
+  border 1px solid #d6d6d6
+  color #adadad
+  border-radius 50px
+  cursor pointer
+  transition all .3s
+
+#pagination span:hover
+  color #69d2e7
+  border 1px solid #69d2e7
+  box-shadow: 0 0 2px rgba(105,210,231,.85)
 </style>

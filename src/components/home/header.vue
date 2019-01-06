@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getWindowHeight, getRandomstr } from '@/utils/index'
+import { getWindowHeight, getRandomStr } from '@/utils/index'
 import { addClass, removeClass } from '@/utils/class'
 
 export default {
@@ -73,11 +73,11 @@ export default {
   }),
   methods: {
     upper () {
-      let random = getRandomstr()
+      let random = getRandomStr()
       this.background = require(`./../../assets/imgs/comic/${random}.png`)
     },
     lower () {
-      let random = getRandomstr()
+      let random = getRandomStr()
       this.background = require(`./../../assets/imgs/comic/${random}.png`)
     },
     videoClick () {

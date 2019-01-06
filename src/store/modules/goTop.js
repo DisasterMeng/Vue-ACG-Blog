@@ -3,13 +3,13 @@ const state = {
 }
 
 const mutations = {
-  SETSCROLL: (state, data) => {
+  SETSCROLL (state, data) {
     state.offsetTop = data
   }
 }
 
 const actions = {
-  setScroll: ({ commit }, data) => {
+  setScroll ({ commit }, data) {
     commit('SETSCROLL', data)
   }
 }

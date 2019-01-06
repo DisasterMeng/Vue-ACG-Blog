@@ -1,22 +1,28 @@
 <template lang="pug">
-    div.blog-header(v-lazy:background-image="background")
+    div.blog-header(v-lazy:background-image="details.summary_img")
       div.blog-details
-        h1.blog-title hello World
+        h1.blog-title {{details.title}}
         p.details
           span
             a(href='/')
               img(src='@/assets/imgs/author.png')
           span
             a(href='/') 凌寒初见
-          span · 2018-07-10 · 1314次阅读
+          span · {{details.created}} · {{details.page_view}}次阅读
 </template>
 
 <script>
 export default {
   name: 'blog-header',
   data: () => ({
-    background: require(`./../../assets/imgs/comic/004.png`)
-  })
+  }),
+  created () {
+  },
+  computed: {
+    details () {
+      return this.$store.state.details.details
+    }
+  }
 }
 </script>
 
@@ -24,6 +30,7 @@ export default {
 .blog-header
   width 100%
   height 475px
+  background-size: cover
 
 .blog-details
   max-width 800px

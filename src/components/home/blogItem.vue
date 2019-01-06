@@ -1,26 +1,26 @@
 <template lang='pug'>
   article.blog-article
     v-flex.blog-picture(xs7 :class="Index % 2 ? 'itemLeft':'itemRight'" @click="$router.push('/blogs/'+blog.id)")
-      img(:src="blog.img")
+      img(:src="blog.summary_img")
     v-flex.blog-content-wrap(xs5 :class="Index % 2 ? 'itemRight':'itemLeft'")
       div.blog-content
         div.blog-date
           v-icon schedule
-          span 发布于{{blog.time | timeformat }}
+          span 发布于{{blog.created | timeformat }}
         div.blog-title(@click="$router.push('/blogs/'+blog.id)")
           span {{blog.title}}
         div.blog-meta
           span
             v-icon visibility
-            span {{blog.num}} 热度
-          span.comment
+            span {{blog.page_view}} 热度
+          span.comment(v-if='false')
             v-icon chat_bubble_outline
             span {{blog.commentNum}} 条评论
           span.category
             v-icon folder_open
-            span {{blog.category.name}}
+            span {{blog.category}}
         div.blog-excerpt
-          p {{blog.excerpt}}
+          p {{blog.desc}}
         div.blog-bottom(@click="$router.push('/blogs/'+blog.id)")
           v-icon more_horiz
 </template>
@@ -73,6 +73,7 @@ export default {
   border-radius 10px
   box-shadow 0 1px 20px -8px rgba(0,0,0,.5)
   transition box-shadow .3s
+  animation list-show .5s
 
 .blog-picture
   height 300px
@@ -113,7 +114,7 @@ export default {
 .blog-title span
   font-weight bold
   cursor pointer
-  font-size 1.17em
+  font-size 18px
   color #504e4e
   transition color .3s
 
@@ -148,6 +149,14 @@ export default {
   padding 20px 35px 0 35px
   width 100%
   height 100%
+
+@keyframes list-show
+  0%
+    opacity 0
+    transform translateY(80px)
+  100%
+    opacity 1
+    transform translateY(0)
 
 @media screen and (max-width:960px)
   .itemLeft

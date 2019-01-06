@@ -3,14 +3,14 @@ const state = {
 }
 
 const mutations = {
-  SETDRAWER: (state, data) => {
-    state.drawer = data
+  SETDRAWER (state, drawer) {
+    state.drawer = drawer
   }
 }
 
 const actions = {
-  setDrawer: ({ commit }, data) => {
-    commit('SETDRAWER', data)
+  setDrawer ({ commit }, drawer) {
+    commit('SETDRAWER', drawer)
   }
 }
 

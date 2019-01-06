@@ -1,5 +1,3 @@
-const isEmpty = str => !((str && str !== undefined && str.length > 0))
-
 const getRandomInteger = (max, min = 0) => {
   return Math.round(Math.random() * max + min)
 }
@@ -28,22 +26,19 @@ const getWindowHeight = () => {
   return windowHeight
 }
 
-const getRandomstr = () => {
+const getRandomStr = () => {
   let random = getRandomInteger(5)
   if (random < 10) {
     random = `00${random}`
   } else if (random > 10 && random < 100) {
     random = `0${random}`
-  } else {
-    random = `${random}`
   }
   return random
 }
 
 export {
-  isEmpty,
   getRandomInteger,
   getScrollHeight,
   getWindowHeight,
-  getRandomstr
+  getRandomStr
 }

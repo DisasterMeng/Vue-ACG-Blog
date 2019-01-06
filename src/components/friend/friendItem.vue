@@ -1,17 +1,39 @@
 <template lang='pug'>
   ul.link-items
     li.link-item(v-for="(item,index) in friendData" :key="index")
-      a(:href="item.webSite" target="_blank")
-        img(v-lazy="item.avatar")
+      a(:href="item.link" target="_blank")
+        img(v-lazy="item.image")
         p.link-name(:title="item.name") {{ item.name }}
-        div.link-flag(:title="item.flag") {{ item.flag }}
+        div.link-flag(:title="item.desc") {{ item.desc }}
 </template>
 
 <script>
 export default {
   name: 'friend-item',
+  data: () => ({
+    friendData: []
+  }),
   props: {
-    friendData: Array
+    friendName: String
+  },
+  created () {
+    switch (this.friendName) {
+      case 'harem':
+        this.friendData = this.harem
+        break
+      case 'coldPalace':
+        console.log(this.coldPalace)
+        this.friendData = this.coldPalace
+        break
+    }
+  },
+  computed: {
+    harem () {
+      return this.$store.state.friend.harem
+    },
+    coldPalace () {
+      return this.$store.state.friend.coldPalace
+    }
   }
 }
 </script>

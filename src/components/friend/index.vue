@@ -25,19 +25,20 @@
                             |'后宫'顾名思义就是我的后宫拉< (￣︶￣)>,
                             |'冷宫'顾名思义被我打入冷宫(如链接失效,保留一定时间,请及时联系我)
                             | 如果存在网站质量不佳,不会通知直接删除
-                    div.link-title(v-if="allLink.harem.length? true:false")
+                    div.link-title(v-if="harem.length? true:false")
                         P.title 后宫
                         p 看来今天朕的后宫也甚是安稳啊
-                        friendItem(:friendData="allLink.harem")
-                    div.link-title(v-if="allLink.coldPalace.length? true:false")
+                        friendItem(:friendName="haremName" key="haremName")
+                    div.link-title(v-if="coldPalace.length? true:false")
                         P.title 冷宫
                         P 大家不会怪我吧(￣o￣)
-                        friendItem(:friendData="allLink.coldPalace")
+                        friendItem(:friendName="coldPalaceName" key="coldPalaceName")
 </template>
 
 <script>
 import myheader from './../header/index'
 import friendItem from './friendItem'
+import { fetchFriendsApi } from '@/api/index'
 
 export default {
   name: 'friend',
@@ -46,21 +47,28 @@ export default {
       background: require(`./../../assets/imgs/comic/689.png`),
       describe: '友人帐'
     },
-    allLink: {
-      harem: [
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' }
-      ],
-      coldPalace: [
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' },
-        { name: '素笺', webSite: 'http://sujian.yandingblog.cn', flag: '明天和意外，如果意外先来了，你的明天就不再是你的明天', avatar: 'http://img.cdn.yandingblog.cn/blog/favicon.ico' }
-      ]
-    }
+    haremName: 'harem',
+    coldPalaceName: 'coldPalace'
   }),
+  methods: {
+    fetchFriends () {
+      fetchFriendsApi().then(res => {
+        this.$store.dispatch('setHarem', res.data)
+        // this.$store.dispatch('setColdPalace', res.data)
+      })
+    }
+  },
+  created () {
+    this.fetchFriends()
+  },
+  computed: {
+    harem () {
+      return this.$store.state.friend.harem
+    },
+    coldPalace () {
+      return this.$store.state.friend.coldPalace
+    }
+  },
   components: {
     myheader,
     friendItem
