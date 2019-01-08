@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Noto+Serif|Noto+Serif+SC|PT+Serif|Source+Code+Pro|Ubuntu:400,700&subset=chinese-simplified,japanese')
 @import './markdown.styl'
 
 html, body, div, span, applet, object, iframe,
@@ -13,44 +14,45 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video, input
-    margin: 0
-    padding: 0
-    border: 0
-    font-size: 100%
-    vertical-align: baseline
-    font-family: source-han-serif-sc,source-han-serif-japanese,Microsoft YaHei, serif
-    font-style: normal
-    font-weight: 500
+    margin 0
+    padding 0
+    border 0
+    font-size 100%
+    vertical-align baseline
+    // font-family source-han-serif-sc,source-han-serif-japanese,Microsoft YaHei, serif
+    font-family 'Merriweather Sans','Source Code Pro','Ubuntu','Noto Serif SC','Noto Serif','PT Serif',Microsoft YaHei,monospace,sans-serif,serif
+    font-style normal
+    font-weight 500
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section
-    display: block
+    display block
 body
-    line-height: 1
-    -webkit-text-size-adjust: none
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    line-height 1
+    -webkit-text-size-adjust none
+    -webkit-tap-highlight-color rgba(0, 0, 0, 0)
 html, body
-    width: 100%
+    width 100%
 blockquote, q
-    quotes: none
+    quotes none
     &:before, &:after
-        content: none
+        content none
 table
-    border-collapse: collapse
-    border-spacing: 0
+    border-collapse collapse
+    border-spacing 0
 a
-    color: #7e8c8d
-    text-decoration: none
-    -webkit-backface-visibility: hidden
+    color #7e8c8d
+    text-decoration none
+    -webkit-backface-visibility hidden
 li
-    list-style: none
+    list-style none
 ::-webkit-scrollbar
-    width: 4px
-    height: 4px
-    background-color: #eee
+    width 4px
+    height 4px
+    background-color #eee
 ::-webkit-scrollbar-thumb
-    background-color: #69d2e7
+    background-color #69d2e7
 ::-webkit-scrollbar-track
-    background-color: #eee
+    background-color #eee
 .container-content
     padding-bottom 30px
     background-color #FFFFFF

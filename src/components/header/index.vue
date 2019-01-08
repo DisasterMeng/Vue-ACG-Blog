@@ -18,6 +18,7 @@ export default {
   width 100%
   height 475px
   position relative
+  background-size cover
 
 .details
   position absolute

@@ -15,9 +15,10 @@
       v-toolbar-items.pc-items
         nav.navRight
           ul.menu
-              li(v-for="(item,index) in menu" :key="index" @click="menuClick(index)")
-                v-icon.toolbar-icon {{item.icon}}
-                span {{item.span}}
+              li(v-for="(item,index) in menu" :key="index")
+                router-link(:to="item.path")
+                  v-icon.toolbar-icon {{item.icon}}
+                  span {{item.span}}
       v-toolbar-items.toolbarRight.pc-items
         v-icon.toolbar-icon youtube_searched_for
         v-icon.toolbar-icon account_circle
@@ -35,34 +36,17 @@ export default {
   data: () => (
     {
       menu: [
-        { icon: 'home', span: '首页' },
-        { icon: 'loyalty', span: '归档' },
-        { icon: 'link', span: '友人帐' },
-        { icon: 'restaurant', span: '投食' },
-        { icon: 'near_me', span: '关于' }
+        { icon: 'home', span: '首页', path: '/' },
+        { icon: 'loyalty', span: '归档', path: '/categorys' },
+        { icon: 'link', span: '友人帐', path: '/friend' },
+        { icon: 'restaurant', span: '投食', path: '/feed' },
+        { icon: 'near_me', span: '关于', path: '/about' }
       ]
     }
   ),
   methods: {
     setDrawer () {
       this.$store.dispatch('setDrawer', true)
-    },
-    menuClick (index) {
-      switch (index) {
-        case 0:
-          this.$router.push({ path: '/' })
-          break
-        case 1: break
-        case 2:
-          this.$router.push({ name: 'friend' })
-          break
-        case 3:
-          this.$router.push({ name: 'feed' })
-          break
-        case 4:
-          this.$router.push({ name: 'about' })
-          break
-      }
     }
   },
   computed: {
@@ -154,7 +138,7 @@ export default {
   position relative
   cursor pointer
 
-.menu li:hover .toolbar-icon, .menu li:hover, .pc-a:hover, .pc-a:hover .toolbarTitle rt
+.menu li:hover .toolbar-icon, .menu li:hover,.menu li:hover span, .pc-a:hover, .pc-a:hover .toolbarTitle rt
   color #69d2e7
 
 .pc-a:hover .toolbarTitle
@@ -178,7 +162,7 @@ export default {
   max-width 0
   transition max-width .25s ease-in-out
   height 5px
-  bottom -18px
+  bottom -16.5px
 
 .menu li:hover::before
   max-width 100%

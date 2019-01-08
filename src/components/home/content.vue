@@ -10,8 +10,8 @@
                     h1
                         i.fa.fa-envira.explore-icon &nbsp;explore
                     blogItem(v-for="(item,index) in blogData" :key="index" :blog='item' :Index='index')
-                    div#pagination(v-if="next" @click="lower")
-                      span lower
+                    div#pagination(v-if="next")
+                      span(@click="lower") lower
 </template>
 
 <script>

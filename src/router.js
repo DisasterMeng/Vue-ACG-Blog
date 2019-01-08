@@ -37,8 +37,22 @@ const router = new Router({
           path: '/friend',
           name: 'friend',
           component: () => import('./components/friend/index.vue')
+        },
+        {
+          path: '/categorys',
+          name: 'categorys',
+          component: () => import('./components/categorys/index.vue')
         }
       ]
+    },
+    {
+      name: '404',
+      path: '/404',
+      component: () => import('./components/404/index.vue')
+    },
+    {
+      path: '*', // 此处需特别注意至于最底部
+      redirect: '/404'
     }
   ]
 })

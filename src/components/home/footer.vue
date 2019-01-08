@@ -7,7 +7,7 @@
         span.my-presence (ง •̀_•́)ง
         span {{liveTime}}
       p 托管于
-        a.upyun(href='https://console.upyun.com/register/?invite=r1EuSLN-f' target='_blank') 又拍云
+        a.upyun(href='https://developer.qiniu.com' target='_blank') 七牛云
 </template>
 
 <script>

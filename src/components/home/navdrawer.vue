@@ -18,11 +18,11 @@
       v-text-field(label="search..." append-icon="search" v-model="searchValue" @keyup.enter="search")
     div.m-mune
       v-list.pt-0
-        v-list-tile(v-for="(item,index) in menu" :key="index" @click="menuClick(index)" ripple)
-          v-list-tile-action
-            v-icon {{ item.icon }}
-          v-list-tile-content
-            v-list-tile-title {{ item.span }}
+        v-list-tile.m-list-tile(v-for="(item,index) in menu" :key="index" :to="item.path" @click="" ripple)
+            v-list-tile-action
+              v-icon {{ item.icon }}
+            v-list-tile-content
+              v-list-tile-title {{ item.span }}
     p.m-footer &copy; 2018 · yandingblog
 </template>
 
@@ -32,11 +32,11 @@ export default {
   data: () => ({
     searchValue: '',
     menu: [
-      { icon: 'home', span: '首页' },
-      { icon: 'loyalty', span: '归档' },
-      { icon: 'link', span: '友人帐' },
-      { icon: 'restaurant', span: '投食' },
-      { icon: 'near_me', span: '关于' }
+      { icon: 'home', span: '首页', path: '/' },
+      { icon: 'loyalty', span: '归档', path: '/categorys' },
+      { icon: 'link', span: '友人帐', path: '/friend' },
+      { icon: 'restaurant', span: '投食', path: '/feed' },
+      { icon: 'near_me', span: '关于', path: '/about' }
     ]
   }),
   methods: {
@@ -46,28 +46,16 @@ export default {
     search () {
       // 跳转到搜索vue 并且传参
       console.log(`search: ${this.searchValue}`)
-    },
-    menuClick (index) {
-      switch (index) {
-        case 0:
-          this.$router.push({ path: '/' })
-          break
-        case 1: break
-        case 2:
-          this.$router.push({ name: 'friend' })
-          break
-        case 3:
-          this.$router.push({ name: 'feed' })
-          break
-        case 4:
-          this.$router.push({ name: 'about' })
-          break
-      }
     }
   },
   computed: {
-    drawer () {
-      return this.$store.state.home.drawer
+    drawer: {
+      get () {
+        return this.$store.state.home.drawer
+      },
+      set (newValue) {
+        this.$store.dispatch('setDrawer', newValue)
+      }
     }
   }
 }
@@ -119,8 +107,8 @@ export default {
   height auto
   padding 10px 30px
 
-.list__tile
-  padding 0 32px !important
+.m-list-tile
+  padding 0 16px !important
 
 .m-footer
   font-size 14px

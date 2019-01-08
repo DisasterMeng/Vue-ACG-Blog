@@ -120,6 +120,7 @@ export default {
   justify-content center
   align-items center
   display flex
+  background-size cover
 
 .header-container
   max-width 800px

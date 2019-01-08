@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 let instance = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'http://yandingblog.cn:8000/',
+  baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'http://yandingblog.cn:9000/',
   responseType: 'json',
   transformRequest: [function (data) {
     if (data && data.constructor && data.constructor.name === 'FormData') {

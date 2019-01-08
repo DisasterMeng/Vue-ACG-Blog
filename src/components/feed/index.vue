@@ -105,7 +105,6 @@ export default {
   text-align center
   left calc(42%)
   top calc(50% - 60px)
-  z-index -1
   transform rotatez(-15deg)
 
 #donateBox
