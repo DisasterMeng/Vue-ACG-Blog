@@ -42,6 +42,11 @@ const router = new Router({
           path: '/categorys',
           name: 'categorys',
           component: () => import('./components/categorys/index.vue')
+        },
+        {
+          path: '/markdown',
+          name: 'markdown',
+          component: () => import('./components/markdown/index.vue')
         }
       ]
     },

@@ -34,11 +34,7 @@ export default {
   },
   data: () => ({
   }),
-  methods: {
-    timeformat (time) {
-      return time
-    }
-  },
+  methods: {},
   props: {
     blog: Object,
     Index: Number

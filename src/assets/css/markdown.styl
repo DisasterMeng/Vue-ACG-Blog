@@ -24,12 +24,20 @@
         p  
             padding 2px 0
     p  
+        margin-top 16px
         line-height 30px
         code 
             background-color rgba(254,250,199,1)
             color #e67474
             text-shadow none
             border-radius 5px
+            font-size 16px
+            padding 5px
+            display inline
+            &::after
+                content ''
+            &::before
+                content ''
     h1 
         color #404040
         display block
@@ -66,6 +74,35 @@
         padding-inline-start 40px
         li 
             list-style-type circle
+        code  
+            font-size 16px
+            display inline
+            padding 5px
+            text-shadow none
+            border-radius 5px
+            &::after
+                content ''
+            &::before
+                content ''
+    ol  
+        display block
+        margin-block-start 16px
+        margin-block-end 16px
+        margin-inline-start 0px
+        margin-inline-end 0px
+        padding-inline-start 40px
+        li 
+            list-style-type decimal
+        code  
+            font-size 16px
+            display inline
+            padding 5px
+            text-shadow none
+            border-radius 5px
+            &::after
+                content ''
+            &::before
+                content ''
     a 
         color #e67474;
         text-decoration underline dotted rgba(0,0,0,.1)
@@ -85,6 +122,28 @@
         width 100%
         code  
             background-color #1d1f21
+            color #FFFFFF
+            padding 5px
+            font-size 15px
+            font-weight normal 
+            &::after
+                content ''
+            &::before
+                content ''
     del 
         margin-bottom 16px
-    
+    hr 
+        margin 24px 0
+        border 0
+        height 1px
+        border-top 1px solid #CCCCCC
+    table
+        margin 0 0 24px
+        width 100%
+        border-collapse collapse
+        border-spacing 0
+        th,td
+            color #404040
+            text-align right
+        th 
+            font-weight 600 
