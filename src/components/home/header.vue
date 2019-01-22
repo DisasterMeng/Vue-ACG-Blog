@@ -104,6 +104,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.header-carousel
+  position relative
+
 .header-carousel:after
   content ''
   position absolute
