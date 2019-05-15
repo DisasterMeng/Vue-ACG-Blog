@@ -2,7 +2,7 @@
     v-flex.footer-center
       p.snow
       p 月影流花花不语，梦入烟水水不兴
-      p &copy; 2018 · yandingblog · 蜀ICP备18015595号
+      p &copy; 2019 · yanding · 粤ICP备19031539号
       p
         span.my-presence (ง •̀_•́)ง
         span {{liveTime}}

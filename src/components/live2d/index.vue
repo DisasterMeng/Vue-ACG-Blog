@@ -1,30 +1,33 @@
 <template lang="pug">
   div.live2d-vue
     div.live2d-panel
-        live2d(v-if="islive2d" :modelPath="modelPath" ref="l2dMange")
+      live2d(v-if="islive2d" :modelPath="modelPath" ref="l2dMange")
     div.tools-panel
       live2dTools(v-for="(item,index) in toolsData" :key="index" v-if="item.show" :toolsStyle="toolsStyle"  @click="toolsClick(item)" :width="item.width" :toolsID="item.tabMsg" :tabMsg="item.tabMsg" :customDialogue='item.customDialogue' :backgroundColor="item.backgroundColor" ref='tool')
+    a-player.music-panel(:audio="audio" :lrc-type="3" fixed preload)
 </template>
 
 <script>
 import custom from '@/utils/custom'
+import { live2d, music } from '@/api/index'
 
 export default {
   name: 'live2d-vue',
   data: () => ({
-    modelPath: 'http://pjxaahzsk.bkt.clouddn.com/Pio/model.json',
+    modelPath: '',
     toolsStyle: {
       color: '#000000'
     },
     toolsData: [
       { tabMsg: 'home', backgroundColor: '#ff0', show: true },
-      { tabMsg: 'dialogue', width: 300, customDialogue: custom, show: true },
       { tabMsg: 'change', backgroundColor: '#add8e6', show: true },
+      { tabMsg: 'dialogue', width: 300, customDialogue: custom, show: true },
       { tabMsg: 'save', backgroundColor: 'green', show: true },
       { tabMsg: 'about', backgroundColor: '#eb7a77', show: true },
       { tabMsg: 'hide', backgroundColor: 'red', show: true }
     ],
-    islive2d: true
+    islive2d: true,
+    audio: []
   }),
   mounted () {
     setInterval(() => {
@@ -35,6 +38,8 @@ export default {
           if (tool && tool.length > 0) { tool[0].showMessage(data.hitokoto) }
         })
     }, 30000)
+    this.getLive2dModel()
+    this.getMusic()
   },
   methods: {
     toolsClick (item) {
@@ -43,8 +48,7 @@ export default {
           window.open('https://github.com/LingHanChuJian/live2d-vue')
           break
         case 'change':
-          // this.$refs.l2dMange.initL2dMange('http://pjxaahzsk.bkt.clouddn.com/Pio/modelv2.json')
-          // this.modelPath = 'http://pjxaahzsk.bkt.clouddn.com/Pio/modelv2.json'
+          this.$refs.l2dMange.initL2dMange(this.modelPath)
           break
         case 'save':
           window.Live2D.captureName = `live2d-${Date.now()}.png`
@@ -78,6 +82,20 @@ export default {
           if (tabMsg === 'show') { this.toolsData[i].tabMsg = 'hide' }
         }
       }
+    },
+    getLive2dModel (name = 'Pio') {
+      live2d({ name }).then(res => {
+        if (res.code === 200) {
+          this.modelPath = `${res.data.file_model}?name=${Date.now()}`
+        }
+      })
+    },
+    getMusic () {
+      music().then(res => {
+        if (res.code === 200) {
+          this.audio.push.apply(this.audio, res.data)
+        }
+      })
     }
   }
 }
@@ -90,7 +108,7 @@ export default {
   .tools-panel
     position fixed
     left 0
-    bottom 0
+    bottom 66px
     max-width 32px
   .live2d-panel
     position fixed

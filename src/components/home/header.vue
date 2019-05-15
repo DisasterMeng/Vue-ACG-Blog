@@ -40,7 +40,8 @@
 </template>
 
 <script>
-import { getWindowHeight, getRandomStr } from '@/utils/index'
+import { summaryRandom } from '@/api/index'
+import { getWindowHeight, getRandomChar } from '@/utils/index'
 import { addClass, removeClass } from '@/utils/class'
 
 export default {
@@ -48,6 +49,7 @@ export default {
   mounted () {
     let video = document.querySelector('.video')
     let _this = this
+    this.background = `${summaryRandom}?random=${getRandomChar()}`
     video.addEventListener('ended', _ => {
       _this.videoico = 'play_circle_outline'
       video.style.zIndex = -1
@@ -62,7 +64,7 @@ export default {
   data: () => ({
     notes: '载入视频...',
     videoico: 'play_circle_outline',
-    background: require(`./../../assets/imgs/comic/001.png`),
+    background: '',
     backgroundStyle: {
       height: `${getWindowHeight()}px`
     },
@@ -73,12 +75,10 @@ export default {
   }),
   methods: {
     upper () {
-      let random = getRandomStr()
-      this.background = require(`./../../assets/imgs/comic/${random}.png`)
+      this.background = `${summaryRandom}?random=${getRandomChar()}`
     },
     lower () {
-      let random = getRandomStr()
-      this.background = require(`./../../assets/imgs/comic/${random}.png`)
+      this.background = `${summaryRandom}?random=${getRandomChar()}`
     },
     videoClick () {
       let video = document.querySelector('.video')

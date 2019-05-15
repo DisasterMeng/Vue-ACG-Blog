@@ -17,21 +17,30 @@
 <script>
 import myheader from './header'
 import blogItem from './blogItem'
-import { fetchBlogsApi } from '@/api/index'
+import { blogs, notice } from '@/api/index'
 
 export default {
   name: 'content-home',
   data: () => ({
     blogData: [],
     next: '',
-    notice: '项目已经开源,欢迎下载试玩'
+    notice: ''
   }),
   methods: {
-    fetchBlogs (page = 1) {
-      fetchBlogsApi({ page }).then(res => {
-        this.next = res.data.next
-        for (let i = 0, len = res.data.results.length; i < len; i++) {
-          this.blogData.push(res.data.results[i])
+    getBlogs (page = 1) {
+      blogs({ page }).then(res => {
+        if (res.code === 200) {
+          this.next = res.data.next
+          for (let i = 0, len = res.data.results.length; i < len; i++) {
+            this.blogData.push(res.data.results[i])
+          }
+        }
+      })
+    },
+    getNotice () {
+      notice().then(res => {
+        if (res.code === 200) {
+          this.notice = res.data.notice
         }
       })
     },
@@ -41,13 +50,14 @@ export default {
         let page = url.search.match(/page=(\d+)/)
         if (page && page.length > 0) {
           page = page[1]
-          this.fetchBlogs(page)
+          this.getBlogs(page)
         }
       }
     }
   },
   created () {
-    this.fetchBlogs()
+    this.getBlogs()
+    this.getNotice()
   },
   components: {
     myheader,

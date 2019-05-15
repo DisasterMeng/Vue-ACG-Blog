@@ -1,23 +1,16 @@
 import axios from 'axios'
+import querystring from 'querystring'
 
 let instance = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'http://yandingblog.cn:9000/',
+  baseURL: process.env.VUE_APP_BASE_URL,
   responseType: 'json',
-  transformRequest: [function (data) {
-    if (data && data.constructor && data.constructor.name === 'FormData') {
-      return data
-    }
-    let newData = ''
-    for (let k in data) {
-      newData += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&'
-    }
-    return newData
-  }]
+  transformRequest: [
+    data => querystring.stringify(data)
+  ]
 })
 
 instance.interceptors.request.use(async (config) => {
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-  // config.headers['X-Requested-With'] = 'XMLHttpRequest'
   return config
 }, err => Promise.reject(err))
 

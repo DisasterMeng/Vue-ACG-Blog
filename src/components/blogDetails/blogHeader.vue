@@ -16,7 +16,10 @@ export default {
   name: 'blog-header',
   data: () => ({
   }),
-  created () {
+  methods: {
+    getImg () {
+
+    }
   },
   computed: {
     details () {

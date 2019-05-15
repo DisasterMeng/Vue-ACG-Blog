@@ -31,8 +31,8 @@ export default {
       'background-image': ''
     },
     appreciate: [
-      { name: 'AliPay', id: 'AliPay', imgUrl: require('./../../assets/imgs/AliPayQR.png') },
-      { name: 'WeChat', id: 'WeChat', imgUrl: require('./../../assets/imgs/WeChanQR.png') }
+      { name: 'AliPay', id: 'AliPay', imgUrl: require('./../../assets/imgs/payment/AliPayQR.png') },
+      { name: 'WeChat', id: 'WeChat', imgUrl: require('./../../assets/imgs/payment/WeChanQR.png') }
     ]
   }),
   methods: {
@@ -99,7 +99,7 @@ export default {
   height 70px
   line-height 70px
   color #FFFFFF
-  background #FFD886 url(./../../assets/imgs/like.svg) no-repeat center 10px
+  background #FFD886 url(./../../assets/imgs/payment/like.svg) no-repeat center 10px
   background-size 20px
   border-radius 35px
   text-align center
@@ -149,10 +149,10 @@ export default {
   display block
 
 #donateBox #PayPal
-  background-image url(./../../assets/imgs/paypal.svg)
+  background-image url(./../../assets/imgs/payment/paypal.svg)
 
 #donateBox>#BTC
-  background-image url(./../../assets/imgs/bitcoin.svg)
+  background-image url(./../../assets/imgs/payment/bitcoin.svg)
   line-height 28px
 
 #donateBox>#BTC:hover
@@ -163,10 +163,10 @@ export default {
   cursor pointer
 
 #donateBox #AliPay
-  background-image url(./../../assets/imgs/alipay.svg)
+  background-image url(./../../assets/imgs/payment/alipay.svg)
 
 #donateBox #WeChat
-  background-image url(./../../assets/imgs/wechat.svg)
+  background-image url(./../../assets/imgs/payment/wechat.svg)
 
 #QRBox
     top 0
@@ -207,7 +207,7 @@ export default {
     height 24px
     left calc(57% + 5px)
     top calc(50% - 30px)
-    background no-repeat center center url(./../../assets/imgs/github.svg)
+    background no-repeat center center url(./../../assets/imgs/payment/github.svg)
     background-size contain
     opacity 0.3
     transform rotatez(15deg)

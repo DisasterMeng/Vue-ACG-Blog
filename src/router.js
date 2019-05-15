@@ -10,7 +10,6 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
       component: () => import('./components/home/index.vue'),
       children: [
         {

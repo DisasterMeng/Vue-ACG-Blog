@@ -2,6 +2,10 @@ const getRandomInteger = (max, min = 0) => {
   return Math.round(Math.random() * max + min)
 }
 
+const getRandomChar = () => {
+  return Math.random().toString(36).substring(2)
+}
+
 const getScrollHeight = () => {
   let scrollHeight = 0
   let bodyScrollHeight = 0
@@ -26,19 +30,9 @@ const getWindowHeight = () => {
   return windowHeight
 }
 
-const getRandomStr = () => {
-  let random = getRandomInteger(5)
-  if (random < 10) {
-    random = `00${random}`
-  } else if (random > 10 && random < 100) {
-    random = `0${random}`
-  }
-  return random
-}
-
 export {
   getRandomInteger,
   getScrollHeight,
   getWindowHeight,
-  getRandomStr
+  getRandomChar
 }

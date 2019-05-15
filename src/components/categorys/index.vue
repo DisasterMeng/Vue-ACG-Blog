@@ -14,7 +14,7 @@
 <script>
 import moment from 'moment'
 import myheader from './../header/index'
-import { fetchCategorysApi } from '@/api/index'
+import { categorys } from '@/api/index'
 
 export default {
   name: 'categorys',
@@ -27,8 +27,8 @@ export default {
     color: '#69d2e7'
   }),
   methods: {
-    fetchCategorys () {
-      fetchCategorysApi().then(res => {
+    categorys () {
+      categorys().then(res => {
         let blogs = []
         for (let item of res.data) {
           blogs.push(...item.blogs)
@@ -51,7 +51,7 @@ export default {
     }
   },
   created () {
-    this.fetchCategorys()
+    this.categorys()
   },
   components: {
     myheader

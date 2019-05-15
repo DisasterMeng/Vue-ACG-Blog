@@ -21,24 +21,18 @@
                         P ★ webSite: https://yanding.com
                         P ★ avatar: url
                     div.link-explain
-                        P ※ 欢迎大家互换友链,本站暂时只分两类、一类是'后宫'、一类是'冷宫'。
-                            |'后宫'顾名思义就是我的后宫拉< (￣︶￣)>,
-                            |'冷宫'顾名思义被我打入冷宫(如链接失效,保留一定时间,请及时联系我)
+                        P ※ 欢迎大家互换友链,
                             | 如果存在网站质量不佳,不会通知直接删除
                     div.link-title(v-if="harem.length? true:false")
                         P.title 后宫
                         p 看来今天朕的后宫也甚是安稳啊
-                        friendItem(:friendName="haremName" key="haremName")
-                    div.link-title(v-if="coldPalace.length? true:false")
-                        P.title 冷宫
-                        P 大家不会怪我吧(￣o￣)
-                        friendItem(:friendName="coldPalaceName" key="coldPalaceName")
+                        friendItem
 </template>
 
 <script>
 import myheader from './../header/index'
 import friendItem from './friendItem'
-import { fetchFriendsApi } from '@/api/index'
+import { friends } from '@/api/index'
 
 export default {
   name: 'friend',
@@ -46,27 +40,21 @@ export default {
     headerData: {
       background: require(`./../../assets/imgs/comic/689.png`),
       describe: '友人帐'
-    },
-    haremName: 'harem',
-    coldPalaceName: 'coldPalace'
+    }
   }),
   methods: {
-    fetchFriends () {
-      fetchFriendsApi().then(res => {
+    friends () {
+      friends().then(res => {
         this.$store.dispatch('setHarem', res.data)
-        // this.$store.dispatch('setColdPalace', res.data)
       })
     }
   },
   created () {
-    this.fetchFriends()
+    this.friends()
   },
   computed: {
     harem () {
       return this.$store.state.friend.harem
-    },
-    coldPalace () {
-      return this.$store.state.friend.coldPalace
     }
   },
   components: {

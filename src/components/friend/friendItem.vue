@@ -1,110 +1,114 @@
-<template lang='pug'>
-  ul.link-items
-    li.link-item(v-for="(item,index) in friendData" :key="index")
-      a(:href="item.link" target="_blank")
-        img(v-lazy="item.image")
-        p.link-name(:title="item.name") {{ item.name }}
-        div.link-flag(:title="item.desc") {{ item.desc }}
+<template lang="pug">
+  ul.list
+    li(v-for='(item,index) in harem' :key='index')
+      a.box(:href='item.link' target="_blank")
+        div.friend-img
+          img(v-lazy='item.image')
+        div.friend-info
+          h5 {{item.name}}
+          p {{item.desc}}
+          div.time-box
+            em {{item.created | timeformat}}
 </template>
 
 <script>
 export default {
-  name: 'friend-item',
-  data: () => ({
-    friendData: []
-  }),
-  props: {
-    friendName: String
-  },
+  name: 'friend',
   created () {
-    switch (this.friendName) {
-      case 'harem':
-        this.friendData = this.harem
-        break
-      case 'coldPalace':
-        console.log(this.coldPalace)
-        this.friendData = this.coldPalace
-        break
-    }
+    console.log(this.harem)
   },
   computed: {
     harem () {
       return this.$store.state.friend.harem
-    },
-    coldPalace () {
-      return this.$store.state.friend.coldPalace
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.link-items
-  margin-top 10px
-  width 100%
-  display inline-block
-  padding-left 0
-
-.link-item
-  width 32%
-  float left
-  border 1px solid rgba(0,0,0,.2)
-  padding 10px 18px
-  margin 4px
-  overflow hidden
-  transition all .3s
-  position relative
-  z-index 1
-
-.link-item:before
-  content ''
-  top 0
-  left -60px
-  width 0
-  height 100%
-  background-color #FFEACC
-  transform skew(45deg,0)
-  transition all .5s
-  position absolute
-  z-index -1
-
-.link-name
-  color #404040
-  font-size 16px
-  font-weight bold
-  letter-spacing 1px
-  white-space nowrap
-  text-overflow ellipsis
-  overflow hidden
-
-.link-flag
-  border-top 1px dashed #333333
-  color rgba(0,0,0,.6)
-  font-size 13px
-  padding-top 15px
-  white-space nowrap
-  text-overflow ellipsis
-  overflow hidden
-
-.link-item img
-  float right
-  width 65px
-  height 65px
-  border-radius 100%
-  border 1px solid rgba(0,0,0,.1)
-  box-shadow inset 0 0 10px #000000
-  transition all 1s
-
-.link-item:hover img
-  transform rotate(360deg)
-
-.link-item:hover
-  border 1px solid orange
-
-.link-item:hover:before
-  width 150%
-
-@media screen and (max-width:960px)
-  .link-item
+  .list
+    margin 0
+    padding 0
+  li
+    font-size 14px
+    width 30%
+    display inline-block
+    box-sizing border-box
+    margin-bottom 20px
+    vertical-align middle
+  .box
+    margin 0 auto
+    display block
+    border-radius 4px
+    -webkit-transition all .3s
+    transition all .3s
+    width 200px
+    height 300px
+    box-shadow 0 1px 2px rgba(0,0,0,.1)
+    border-radius 4px
+    border 1px solid #ededed
+    position relative
+    &:hover
+      background-color #24ade4
+      border solid 1px transparent
+      box-shadow 0 6px 12px 0 rgba(36,173,228,.4)
+      h5, p, em
+        color #FFFFFF
+  .friend-img
+    width 100px
+    height 100px
+    border-radius 8px
+    position relative
+    overflow hidden
+    background-repeat no-repeat
+    background-position center
+    box-sizing border-box
+    display block
+    margin 30px auto 18px
+  img
+    display block
     width 100%
+    height 100%
+    position absolute
+    left 50%
+    top 50%
+    z-index 1
+    transform translate(-50%,-50%)
+  h5
+    font-size 18px
+    color #333
+    font-weight 400
+    line-height 16px
+    margin-bottom 10px
+    padding 0 10px
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    transition color .2s
+    text-align center
+  p
+    padding 0 16px
+    font-size 12px
+    color #949494
+    line-height 1.2
+    overflow hidden
+    text-overflow ellipsis
+    margin-bottom 16px
+    height 28px
+    word-wrap break-word
+    text-align center
+  .time-box
+    font-size 0
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    margin-bottom 30px
+  em
+    color #fb7299
+    margin-right 10px
+    font-size 12px
+    line-height 1
+    display block
+    text-align center
 </style>
