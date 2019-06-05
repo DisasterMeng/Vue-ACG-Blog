@@ -124,6 +124,7 @@ export default {
   align-items center
   display flex
   background-size cover
+  background-position center center
 
 .header-container
   max-width 800px

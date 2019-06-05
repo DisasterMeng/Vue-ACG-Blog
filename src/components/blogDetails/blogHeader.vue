@@ -33,7 +33,8 @@ export default {
 .blog-header
   width 100%
   height 475px
-  background-size: cover
+  background-size cover
+  background-position center center
 
 .blog-details
   max-width 800px

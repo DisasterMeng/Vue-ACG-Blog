@@ -1,0 +1,62 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="202" width="202" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+  <desc transform="matrix(4.340277446640869,0,0,4.340277446640869,0,0) ">Created with Sketch.</desc>
+  <defs>
+   <linearGradient id="svg_38" y2="99.3029307%" x2="-21.1415871%" y1="-26.5643443%" x1="148.794275%">
+    <stop offset="0%" stop-color="#D446FF"/>
+    <stop offset="100%" stop-color="#A0D8FF"/>
+   </linearGradient>
+   <linearGradient id="svg_36" y2="-8.31097281%" x2="95.5956597%" y1="20.866645%" x1="41.8083357%">
+    <stop offset="0%" stop-color="#FFFFFF"/>
+    <stop offset="100%" stop-color="#DADADA"/>
+   </linearGradient>
+   <linearGradient id="svg_34" y2="8.97706744%" x2="2.53678786%" y1="70.5577815%" x1="52.2801818%">
+    <stop offset="0%" stop-color="#FFFFFF"/>
+    <stop offset="100%" stop-color="#DADADA"/>
+   </linearGradient>
+   <linearGradient id="svg_32" y2="40.863838%" x2="35.2678133%" y1="12.9995489%" x1="98.684398%">
+    <stop offset="0%" stop-color="#D0D0D0"/>
+    <stop offset="100%" stop-color="#FFFFFF"/>
+   </linearGradient>
+   <linearGradient id="svg_29" y2="123.398162%" x2="-40.2132134%" y1="31.6476155%" x1="34.2841787%">
+    <stop offset="0%" stop-color="#FFDC68"/>
+    <stop offset="100%" stop-color="#CE4300"/>
+   </linearGradient>
+   <linearGradient id="svg_27" y2="34.7418529%" x2="-10.5474304%" y1="2.33776624%" x1="95.7086811%">
+    <stop offset="0%" stop-color="#FFDC68"/>
+    <stop offset="100%" stop-color="#CE4300"/>
+   </linearGradient>
+   <linearGradient id="svg_25" y2="222.055577%" x2="-63.5655829%" y1="39.6484627%" x1="55.2222258%">
+    <stop offset="0%" stop-color="#FFDC68"/>
+    <stop offset="100%" stop-color="#CE4300"/>
+   </linearGradient>
+  </defs>
+  <g stroke="null" id="svg_40">
+   <g transform="matrix(6.258221231700042,0,0,6.258221231700042,-0.43260081943569495,-0.4728280636090474) " fill-rule="evenodd" fill="none" id="svg_21">
+    <g stroke="null" id="svg_22">
+     <g stroke="null" id="svg_23">
+      <ellipse stroke="#A3A3A3" ry="15.614694" rx="15.902447" cy="15.861222" cx="16.128002" fill-rule="nonzero" fill="url(#svg_38)" stroke-width="0.5" id="svg_37"/>
+      <path stroke="null" fill="url(#svg_36)" id="svg_35" d="m5.780851,31.12641c0,0 4.96958,-17.38968 24.31436,-15.17848c0,0 -12.29432,-7.29827 -24.22957,2.54086c-3.52486,8.16474 -0.08479,12.63762 -0.08479,12.63762z"/>
+      <path stroke="null" fill="url(#svg_34)" id="svg_33" d="m7.260351,28.92685c0,0 5.18538,-12.50172 19.0268,-12.72143c-10.52143,2.56323 0.01726,11.65029 0.01726,11.65029c0,0 -8.32264,7.54096 -19.04406,1.07114z"/>
+      <path stroke="null" fill="url(#svg_32)" id="svg_31" d="m4.373311,19.34332c0,0 10.35699,-11.39268 25.82344,-3.52138c-0.2762,-2.14043 -2.10593,-4.55706 -5.38565,-5.24753c-0.72498,-0.34523 -6.04158,-8.56178 -17.46879,-3.83208c3.51546,0.27372 5.02386,0.76615 5.10946,1.13926c-6.07947,-1.04483 -7.88156,7.60696 -8.07846,11.46173z"/>
+      <path stroke="null" fill="#202020" id="svg_30" d="m19.226961,9.67899c0,0 2.64981,-0.949 2.9949,1.87335c-2.61283,0.24651 -2.9949,-1.87335 -2.9949,-1.87335z"/>
+      <path stroke="null" fill="url(#svg_29)" id="svg_28" d="m5.711411,31.18298c0,0 4.53018,-14.77762 19.67615,-15.34936c0,0 -12.29031,-2.24242 -20.97055,11.50782c-0.04813,1.94534 1.2944,3.84154 1.2944,3.84154z"/>
+      <path stroke="null" fill="url(#svg_27)" id="svg_26" d="m7.355021,6.74376c0,0 3.77771,0.21971 5.12645,1.14735c0.56314,-0.11585 1.0413,-0.50142 1.12258,-1.02655c-0.48324,-0.19999 -4.90638,-0.56021 -6.24903,-0.1208z"/>
+      <path stroke="null" fill="url(#svg_25)" id="svg_24" d="m4.407371,19.36297c0,0 4.72957,-5.68065 14.2777,-6.35931c0,0 -12.99796,0.58743 -14.08913,4.25772c-0.30336,0.88257 -0.18857,2.10159 -0.18857,2.10159z"/>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

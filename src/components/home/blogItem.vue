@@ -2,7 +2,7 @@
   article.blog-article
     v-flex.blog-picture(xs7 :class="Index % 2 ? 'itemLeft':'itemRight'")
       router-link(:to="'/blogs/'+ blog.id")
-        img(:src="blog.summary_img")
+        img(v-lazy="blog.summary_img")
     v-flex.blog-content-wrap(xs5 :class="Index % 2 ? 'itemRight':'itemLeft'")
       div.blog-content
         div.blog-date

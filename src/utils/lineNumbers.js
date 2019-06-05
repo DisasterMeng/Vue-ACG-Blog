@@ -116,7 +116,7 @@ class lineNumbers {
 
   documentReady (options) {
     try {
-      let blocks = document.querySelectorAll('code.hljs,code.nohighlight')
+      let blocks = options.el.querySelectorAll('code.hljs,code.nohighlight')
       for (let i in blocks) {
         if (blocks.hasOwnProperty(i)) {
           this.lineNumbersBlock(blocks[i], options)
