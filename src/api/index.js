@@ -26,3 +26,5 @@ export const summaryRandom = `${process.env.VUE_APP_BASE_URL}api/summarys/random
 export const githubLoginUrl = params => `${process.env.VUE_APP_BASE_URL}api/oauth/github-third-url/?${querystring.stringify(params)}`
 
 export const addComment = data => http.post('/api/comments/', data)
+
+export const commentUser = () => http.get('/api/user/my-info/')

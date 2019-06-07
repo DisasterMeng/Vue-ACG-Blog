@@ -1,26 +1,19 @@
 <template lang="pug">
-    div.blog-header(v-lazy:background-image="details.summary_img")
-      div.blog-details
-        h1.blog-title {{details.title}}
-        p.details
-          span
-            a(href='/')
-              img(src='@/assets/imgs/author.png')
-          span
-            a(href='/') 凌寒初见
-          span · {{details.created}} · {{details.page_view}}次阅读
+  div.blog-header(v-lazy:background-image="details.summary_img")
+    div.blog-details
+      h1.blog-title {{details.title}}
+      p.details
+        span
+          a(href='/')
+            img(src='@/assets/imgs/author.png')
+        span
+          a(href='/') 凌寒初见
+        span · {{details.created}} · {{details.page_view}}次阅读
 </template>
 
 <script>
 export default {
   name: 'blog-header',
-  data: () => ({
-  }),
-  methods: {
-    getImg () {
-
-    }
-  },
   computed: {
     details () {
       return this.$store.state.details.details

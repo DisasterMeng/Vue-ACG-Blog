@@ -12,7 +12,7 @@ import comment from './comment'
 export default {
   name: 'list',
   data: () => ({
-    commentNum: 10,
+    commentNum: 0,
     comment: []
   }),
   mounted () {

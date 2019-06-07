@@ -10,7 +10,7 @@
                   span 本作品采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可。
               section.blog-section
                 div.blog-pre-next(v-for="(item, index) in pre_next_data" :key="index")
-                  router-link(:to="'/blogs/'+ item.id" @click.native="refresh")
+                  router-link(:to="'/blogs/'+ item.id")
                     img.blog-show(v-lazy="item.summary_img")
                     div.blog-info(:class="index == 0 ? 'blog-info-left':'blog-info-right'")
                       span {{ index == 0 ? 'previous': 'next' }}
@@ -22,7 +22,7 @@
 import myheader from './blogHeader'
 import comment from './../comment/index'
 import Markdown from '@/utils/markdown'
-import { blogDetail } from '@/api/index'
+import { blogDetail, commentUser } from '@/api/index'
 
 export default {
   name: 'blog-details',
@@ -43,16 +43,24 @@ export default {
         if (res.data.next_blog) this.pre_next_data.push(res.data.next_blog)
       })
     },
-    refresh () {
-      this.$router.go(0)
+    commentUsers () {
+      commentUser().then(res => {
+        if (res.code === 200) {
+          this.$store.dispatch('setCommentUser', res)
+        }
+      })
     }
   },
   created () {
     this.blogDetail()
+    this.commentUsers()
   },
   updated () {
-    // this.hljsCode(document.querySelector('#primary'))
     Markdown.getInstance(document.querySelector('#primary'))
+  },
+  beforeRouteUpdate (to, from, next) {
+    next()
+    window.location.reload()
   },
   components: {
     myheader,
