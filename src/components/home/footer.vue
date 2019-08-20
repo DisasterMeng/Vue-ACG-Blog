@@ -2,7 +2,7 @@
     v-flex.footer-center
       p.snow
       p 月影流花花不语，梦入烟水水不兴
-      p &copy; 2019 · yanding · 粤ICP备19031539号
+      p &copy; 2019 · myrove · 粤ICP备19031539号
       p
         span.my-presence (ง •̀_•́)ง
         span {{liveTime}}
@@ -26,7 +26,7 @@ export default {
   methods: {
     live () {
       let cTime = new Date()
-      let liveTime = new Date('2018/12/31 00:00:00')
+      let liveTime = new Date('2019/8/20 00:00:00')
       let Timeold = cTime.getTime() - liveTime.getTime()
       let msPerDay = 24 * 60 * 60 * 1000
       let eDaysold = Timeold / msPerDay
@@ -36,7 +36,7 @@ export default {
       let eMinsold = (eHrsold - hrsold) * 60
       let minsold = Math.floor((eHrsold - hrsold) * 60)
       let seconds = Math.floor((eMinsold - minsold) * 60)
-      return ` yandingblog 成功存活：${daysold}天 ${hrsold}小时 ${minsold}分 ${seconds} 秒`
+      return ` myrove 成功存活：${daysold}天 ${hrsold}小时 ${minsold}分 ${seconds} 秒`
     }
   },
   beforeDestroy () {
