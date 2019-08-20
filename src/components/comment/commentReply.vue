@@ -1,40 +1,75 @@
 <template lang="pug">
-  div.comment-reply
+  div.comment-reply(v-if="isParent")
+    div.comment-reply-title(v-if="parent !== -1")
+      span(@click="cancelReplyClick") Cancel Reply
     p
-      a(:href="markdownUrl" target="_blank")
+      a(href="https://segmentfault.com/markdown" target="_blank")
         img.markdown-icon(:src="markdown")
-      span {{ msg }}
-    textarea-vue(v-model="comment" :textareaStyle="textareaStyle" :placeholder="placeholder" v-particle)
+      span Markdown is Supported
+    textarea-vue(v-model="comment" :textareaStyle="textareaStyle" placeholder="在雪域中遇见自己 ..." v-particle)
     div.comment-submit
-      img.comment-user-avatar(:src="avatar" :title="avatarMsg" @click="githubLogin")
-      input.comment-biu(type="button" value="BiuBiuBiu~" @click="")
+      img.comment-user-avatar(:src="userData.icon" :title="userData.username" @click="login")
+      input.comment-biu(type="button" value="BiuBiuBiu~" @click="sendComment")
 </template>
 
 <script>
-import { githubLoginUrl } from '@/api/index'
+import { githubLoginUrl, addComment, blogComment } from '@/api/index'
 
 export default {
   name: 'reply',
+  props: {
+    parent: {
+      type: Number,
+      default: -1
+    }
+  },
   data: () => ({
-    msg: 'Markdown is Supported',
     markdown: require('@/assets/imgs/markdown.svg'),
-    markdownUrl: 'https://segmentfault.com/markdown',
     comment: '',
     textareaStyle: {
-      background: `url(${require('./../../assets/imgs/comment-bg.png')}) right bottom / 30% no-repeat`,
+      background: `url(${require('@/assets/imgs/comment-bg.png')}) right bottom / 30% no-repeat`,
       padding: '21px 21px 20px'
-    },
-    placeholder: '在雪域中遇见自己 ...',
-    avatar: require('@/assets/imgs/user.png'),
-    avatarMsg: '点击登陆'
+    }
   }),
-  mounted () {
-    // this.$message('我不想工作个世界 <br/><br/>你好这个世界你好这个世界你好这个世界......')
-  },
   methods: {
-    githubLogin () {
-      let url = githubLoginUrl({ current: window.location.href })
-      window.location.href = url
+    login () {
+      if (!this.userData.username) {
+        const url = githubLoginUrl({ current: window.location.href })
+        window.location.href = url
+      }
+    },
+    sendComment () {
+      if (!this.comment) {
+        return this.$message('评论不能为空 !!')
+      }
+      this.$message('正在提交中...')
+      const data = {
+        object_pk: this.$route.params.page,
+        comment: this.comment,
+        parent: this.parent !== -1 ? String(this.parent) : ''
+      }
+      addComment(data).then(res => {
+        if (res.code === 200 || res.code === 201) {
+          this.$message('评论成功 !!')
+          blogComment(data.object_pk).then(res => {
+            console.log(res)
+            if (res.code === 200) {
+              this.$store.dispatch('setComment', res.data)
+            }
+          })
+        }
+      })
+    },
+    cancelReplyClick () {
+      this.$store.dispatch('setParent', -1)
+    }
+  },
+  computed: {
+    userData () {
+      return this.$store.state.comment.user
+    },
+    isParent () {
+      return this.$store.state.comment.parent === this.parent
     }
   }
 }
@@ -42,8 +77,17 @@ export default {
 
 <style lang="stylus" scoped>
 .comment-reply
-  margin-top 30px
+  margin-top 15px
+  .comment-reply-title
+    text-align center
+    span
+      padding 12px 25px
+      background-color #f4f6f8
+      color #454545
+      cursor pointer
+      display inline-block
   p
+    margin-top 30px
     font-size 16px
     a
       display inline-block
@@ -62,6 +106,9 @@ export default {
     height 50px
     border-radius 50%
     cursor pointer
+    transition all 1s
+    &:hover
+      transform rotate(360deg)
   .comment-biu
     width calc(100% - 70px)
     margin-left 20px

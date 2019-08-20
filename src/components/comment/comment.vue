@@ -1,44 +1,49 @@
 <template lang="pug">
-div.comment-contents-wrap
-  div.comment-contents(:class="{ children: data.isChildren}")
-    section.comment-info
-      div.comment-info-left
-        a(:href="data.url" target="_blank")
-          img.avatar(v-lazy="data.img" :alt="data.title")
-      div.comment-info-right
-        div.comment-info-right-top
-          a(:href="data.url" target="_blank")
-            span.master(v-if="data.isAvatar" title="凌寒初见") 博主
-            span.comment-name {{ data.title }}
-        div.comment-info-right-bottom
-          div.comment-info-right-bottom-left
-            span.comment-time 发布于 {{ data.time | timeformat_second}}
-            span.comment-useragent &nbsp;&nbsp;(
-              img(:src="getBrowserSvg(cur_browser)")
-              span &nbsp;{{ cur_browser.name + cur_browser.version}}&nbsp;
-              img(:src="getOSSvg(cur_OS)")
-              span &nbsp;{{ cur_OS.name + cur_OS.version}})
-            span.comment-position &nbsp;来自: {{ data.position }}
-          div.comment-info-right-bottom-right
-            span.comment-reply-button Reply
-    div.comment-body(v-html="data.content")
-  commentReply
+  div.comment-contents-wrap
+    div.comment-contents(:class="{ children: isChildren }")
+      section.comment-info
+        div.comment-info-left
+          a(:href="data.user.github" target="_blank")
+            img.avatar(v-lazy="data.user.icon" :alt="data.title")
+        div.comment-info-right
+          div.comment-info-right-top
+            a(:href="data.user.github" target="_blank")
+              span.master(v-if="data.user.is_superuser" title="凌寒初见") 博主
+              span.comment-name {{ data.user.username }}
+          div.comment-info-right-bottom
+            div.comment-info-right-bottom-left
+              span.comment-time 发布于 {{ data.submit_date }}
+              span.comment-useragent &nbsp;&nbsp;(&nbsp;
+                img(:src="getBrowserSvg(cur_browser)")
+                span &nbsp;{{ cur_browser.name }} {{ cur_browser.version }}&nbsp;
+                img(:src="getOSSvg(cur_OS)")
+                span &nbsp;{{ cur_OS.name}} {{ cur_OS.version }} )
+              span.comment-position &nbsp;来自: {{ data.ip_address }} {{ data.ip_position }}
+            div.comment-info-right-bottom-right
+              span.comment-reply-button(@click="replyClick") Reply
+      div.comment-body(v-html="getCommentBody()")
+      commentReply(:parent="data.id" :key="data.id")
+      tree-comment(v-if="isDescendants" v-for="item in data.descendants" :data="item" :isChildren="true" :key="item.id")
 </template>
 
 <script>
-import commentReply from './commentReply'
 import Markdown from '@/utils/markdown'
 import UAParser from '@/utils/uaParser'
+import commentReply from './commentReply'
 import { browser, os } from '@/utils/browser'
 
 export default {
-  name: 'comment',
+  name: 'treeComment',
   props: {
     data: {
       type: Object,
       default: () => {
         return {}
       }
+    },
+    isChildren: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -49,8 +54,17 @@ export default {
     this.getInfo(this.data)
   },
   methods: {
+    getCommentBody () {
+      if (this.data.parent_user) {
+        return `<a class='comment-at'>@${this.data.parent_user.username}</a> ` + this.data.comment
+      }
+      return this.data.comment
+    },
+    replyClick () {
+      this.$store.dispatch('setParent', this.data.id)
+    },
     getInfo (data) {
-      let parser = UAParser.getInstance(data.ua)
+      let parser = UAParser.getInstance(data.user_agent)
       this.cur_browser = parser.getBrowser()
       this.cur_OS = parser.getOS()
     },
@@ -81,6 +95,11 @@ export default {
   updated () {
     Markdown.getInstance(document.querySelector('.comment-body'))
   },
+  computed: {
+    isDescendants () {
+      return this.data.descendants && this.data.descendants.length
+    }
+  },
   components: {
     commentReply
   }
@@ -89,21 +108,20 @@ export default {
 
 <style lang="stylus" scoped>
   .children
-    padding-left 40px
+    padding-left 40px !important
   .comment-contents
     margin-top 30px
     padding 3px
-    padding-bottom 10px
-    border-bottom 1px dashed #ddd
+    padding-bottom 15px
     position relative
     transition all 1s
+  .comment-info
+    display inline-flex
     &:hover
       .avatar
         transform rotate(360deg)
       .comment-reply-button
         opacity 1
-  .comment-info
-    display inline-flex
     .comment-info-left
       width 50px
     .comment-info-right
@@ -148,11 +166,14 @@ export default {
     cursor pointer
     color #FFFFFF
     right 3px
-    position absolute
     opacity 0
   .comment-body
+    margin-top 15px
     color #63686d
-    padding 0
+    padding 0 0 10px 0px
+    border-bottom 1px dashed #ddd
+  .comment-at
+    color #99ce00
   @media screen and (max-width: 960px)
     .comment-useragent span
       display none

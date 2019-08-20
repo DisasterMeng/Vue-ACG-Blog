@@ -41,8 +41,8 @@
 
 <script>
 import { summaryRandom } from '@/api/index'
-import { getWindowHeight, getRandomChar } from '@/utils/index'
 import { addClass, removeClass } from '@/utils/class'
+import { getWindowHeight, getRandomChar } from '@/utils/index'
 
 export default {
   name: 'header-home',

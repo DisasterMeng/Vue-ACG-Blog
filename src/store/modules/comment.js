@@ -1,6 +1,10 @@
 const state = {
   comment: {},
-  user: {}
+  user: {
+    icon: require('@/assets/imgs/user.png'),
+    username: '点击登陆'
+  },
+  parent: -1
 }
 
 const mutations = {
@@ -9,6 +13,9 @@ const mutations = {
   },
   SETCOMMENTUSER (state, data) {
     state.user = data
+  },
+  SETPARENT (state, data) {
+    state.parent = data
   }
 }
 
@@ -18,6 +25,9 @@ const actions = {
   },
   setCommentUser ({ commit }, data) {
     commit('SETCOMMENTUSER', data)
+  },
+  setParent ({ commit }, data) {
+    commit('SETPARENT', data)
   }
 }
 

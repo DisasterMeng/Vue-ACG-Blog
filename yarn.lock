@@ -6605,10 +6605,10 @@ text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-textarea-vue@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/textarea-vue/-/textarea-vue-0.2.0.tgz#5f9e38d04bd0538862bc5ff2e2f666dc739d3bf6"
-  integrity sha512-4EdmFNzzE1x/TIl41EqdlkOCywjvtl4sZDP2EwJjfYmyITWqjCx3JYc8gpJSEOZv07EZUFMxSTk7KzbkhfU0Lg==
+textarea-vue@^0.2.2:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/textarea-vue/-/textarea-vue-0.2.3.tgz#5f89ceef7265f29ab1b75871e87dfb03aa816273"
+  integrity sha512-o9ntJbGDKsQWgLlK1W7UDE03DIaKoa9RIhEGPTLef8e+BgBVxMqnleo5quX4ccokTSKKot3k6ZCgvMi65YsTjg==
   dependencies:
     pug "^2.0.3"
     pug-plain-loader "^1.0.0"

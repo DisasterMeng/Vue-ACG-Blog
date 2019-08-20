@@ -22,7 +22,7 @@
 import myheader from './blogHeader'
 import comment from './../comment/index'
 import Markdown from '@/utils/markdown'
-import { blogDetail, commentUser } from '@/api/index'
+import { blogDetail, commentUser, blogComment } from '@/api/index'
 
 export default {
   name: 'blog-details',
@@ -33,33 +33,44 @@ export default {
     pre_next_data: []
   }),
   methods: {
-    blogDetail () {
-      const id = this.$route.params.page
-      blogDetail(id).then(res => {
-        this.$store.dispatch('setDetails', res.data)
-        this.content = res.data.content
-        this.pre_next_data = []
-        if (res.data.pre_blog) this.pre_next_data.push(res.data.pre_blog)
-        if (res.data.next_blog) this.pre_next_data.push(res.data.next_blog)
+    getBlogDetails () {
+      blogDetail(this.$route.params.page).then(res => {
+        if (res.code === 200) {
+          this.$store.dispatch('setDetails', res.data)
+          this.content = res.data.content
+          this.pre_next_data = []
+          if (res.data.pre_blog) this.pre_next_data.push(res.data.pre_blog)
+          if (res.data.next_blog) this.pre_next_data.push(res.data.next_blog)
+        }
       })
     },
-    commentUsers () {
+    getCommentUsers () {
       commentUser().then(res => {
         if (res.code === 200) {
-          this.$store.dispatch('setCommentUser', res)
+          this.$store.dispatch('setCommentUser', res.data)
+        }
+      })
+    },
+    getComments () {
+      blogComment(this.$route.params.page).then(res => {
+        if (res.code === 200) {
+          this.$store.dispatch('setComment', res.data)
         }
       })
     }
   },
   created () {
-    this.blogDetail()
-    this.commentUsers()
+    this.getBlogDetails()
+    this.getCommentUsers()
+    this.getComments()
   },
   updated () {
     Markdown.getInstance(document.querySelector('#primary'))
   },
   beforeRouteUpdate (to, from, next) {
     next()
+    // this.$router.replace(from.path)
+    // 这个地方写的还有点问题, 最好还是调用 this.blogDetail() 但是有bug
     window.location.reload()
   },
   components: {

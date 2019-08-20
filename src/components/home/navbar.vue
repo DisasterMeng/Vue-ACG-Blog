@@ -20,8 +20,8 @@
                   v-icon.toolbar-icon {{item.icon}}
                   span {{item.span}}
       v-toolbar-items.toolbarRight.pc-items
-        v-icon.toolbar-icon youtube_searched_for
-        v-icon.toolbar-icon account_circle
+        v-icon.toolbar-icon(@click="search") youtube_searched_for
+        v-icon.toolbar-icon(@click="login") account_circle
 </template>
 
 <script>
@@ -45,6 +45,12 @@ export default {
     }
   ),
   methods: {
+    search () {
+      this.$message('搜索功能正在开发中...')
+    },
+    login () {
+      this.$message('后台管理页面还在开发中...')
+    },
     setDrawer () {
       this.$store.dispatch('setDrawer', true)
     }
