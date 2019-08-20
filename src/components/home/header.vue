@@ -201,9 +201,11 @@ export default {
 
 .share-list li:nth-child(2) i
   color #000000
+  font-size 24px
 
 .share-list li:nth-child(3) i
   color #1AB2E8
+  font-size 24px
 
 .share-list li:nth-child(4) i
   color #02BB0E
