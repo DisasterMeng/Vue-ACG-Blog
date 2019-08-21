@@ -1,6 +1,8 @@
 import http from './http'
 import querystring from 'querystring'
 
+export const about = () => http.get('/api/about/')
+
 export const notice = () => http.get('/api/notice/')
 
 export const blogs = params => http.get('/api/blogs/', { params })

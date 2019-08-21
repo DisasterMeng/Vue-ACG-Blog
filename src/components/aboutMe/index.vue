@@ -1,7 +1,7 @@
 <template lang="pug">
     div.content-about
         myheader(:headerData="headerData")
-        div.container-content
+        div.container-content.revision
             v-container.v-container
                 article#abount
                     div.dialogue
@@ -13,17 +13,18 @@
                             div.send-message(v-for="(item,index) in dialogueMessage" :key="index" :class="item.class")
                                 span {{ item.message }}
                             v-btn.choice-button(v-for="(item,index) in dialogueButton" :key="item.message" @click="choice(item)") {{item.message}}
+                article#primary.revision(v-if="content" v-html="content")
 </template>
 
 <script>
+import { about } from '@/api/index'
+import Markdown from '@/utils/markdown'
 import myheader from './../header/index'
 
 export default {
   name: 'about-me',
   data: () => ({
-    about: {
-      content: ''
-    },
+    content: '',
     headerData: {
       background: require(`./../../assets/imgs/comic/690.png`),
       describe: '关于我'
@@ -38,6 +39,13 @@ export default {
     }
   }),
   methods: {
+    getAbout () {
+      about().then(res => {
+        if (res.code === 200) {
+          this.content = res.data.content
+        }
+      })
+    },
     next (message, time = 0, choice = false) {
       setTimeout(_ => {
         if (!choice) {
@@ -75,6 +83,14 @@ export default {
     this.next({ message: '我是凌寒初见', class: 'me' }, 1000)
     this.next({ message: '我就是一个死宅 !!', class: 'me' }, 2000)
     this.next([{ message: '然后呢?', id: 1 }, { message: '少废话', id: 2 }], 3000, true)
+    this.getAbout()
+  },
+  updated () {
+    const primary = document.querySelector('#primary')
+    if (primary) {
+      const markdown = new Markdown(primary)
+      markdown.hljsCode()
+    }
   },
   components: {
     myheader
@@ -133,6 +149,9 @@ export default {
 .choice-button
   background-color #EBEBEB !important
   animation leftMove .5s
+
+.revision
+  padding-bottom 10px !important
 
 @keyframes leftMove
   from

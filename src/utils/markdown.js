@@ -3,23 +3,26 @@ import ClipboardJS from 'clipboard'
 import LineNumbers from '@/utils/lineNumbers'
 
 class Markdown {
-  static getInstance (e) {
-    if (!this.instance) {
-      this.instance = new Markdown()
-    }
-    this.instance.e = e
-    this.instance.hljsCode()
-    return this.instance
+  constructor (e) {
+    this.e = e
   }
 
   hljsCode () {
-    let blocks = this.e.querySelectorAll('pre code')
-    Array.prototype.forEach.call(blocks, hljs.highlightBlock)
-    this.lineNumbers = new LineNumbers()
-    this.lineNumbers.addStyles()
-    this.lineNumbers.initLineNumbersOnLoad({ singleLine: true, el: this.e })
-    this.e.addEventListener('copy', e => this.copySelection(e))
-    this.codeListener()
+    let blocks = []
+    let codes = this.e.querySelectorAll('pre code')
+    for (let i = 0, len = codes.length; i < len; i++) {
+      if (!codes[i].querySelector('table')) {
+        blocks.push(codes[i])
+      }
+    }
+    if (blocks.length > 0) {
+      Array.prototype.forEach.call(blocks, hljs.highlightBlock)
+      this.lineNumbers = new LineNumbers()
+      this.lineNumbers.addStyles()
+      this.lineNumbers.initLineNumbersOnLoad({ singleLine: true, el: this.e })
+      this.e.addEventListener('copy', e => this.copySelection(e))
+      this.codeListener()
+    }
   }
 
   copySelection (e) {
@@ -48,9 +51,7 @@ class Markdown {
     for (let i = 0, len = e.path.length; i < len; i++) {
       if (e.path[i].className.indexOf('copy-code') > -1) {
         let tag = e.path[i].getAttribute('data-clipboard-target')
-        console.log(tag)
         let code = document.querySelector(tag)
-        console.log(code)
         this.clipboard = new ClipboardJS('.copy-code', { container: code })
         this.clipboard.on('error', e => {
           console.error(`Action: ${e.action}`)

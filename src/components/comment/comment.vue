@@ -93,7 +93,11 @@ export default {
     }
   },
   updated () {
-    Markdown.getInstance(document.querySelector('.comment-body'))
+    const commentBody = document.querySelector('.comment-body')
+    if (commentBody) {
+      const markdown = new Markdown(document.querySelector('.comment-body'))
+      markdown.hljsCode()
+    }
   },
   computed: {
     isDescendants () {

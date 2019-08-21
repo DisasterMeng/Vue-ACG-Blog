@@ -48,7 +48,8 @@ export default {
   updated () {
     let primary = document.querySelector('#primary')
     if (primary) {
-      Markdown.getInstance(primary)
+      const markdown = new Markdown(primary)
+      markdown.hljsCode()
     }
   },
   components: {

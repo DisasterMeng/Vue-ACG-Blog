@@ -65,7 +65,11 @@ export default {
     this.getComments()
   },
   updated () {
-    Markdown.getInstance(document.querySelector('#primary'))
+    const primary = document.querySelector('#primary')
+    if (primary) {
+      const markdown = new Markdown(primary)
+      markdown.hljsCode()
+    }
   },
   beforeRouteUpdate (to, from, next) {
     next()
