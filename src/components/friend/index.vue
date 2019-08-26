@@ -18,7 +18,7 @@
                         p 栗子:
                         p ★ name: 凌寒初见
                         p ★ flag: 懒人一枚
-                        P ★ webSite: https://yanding.com
+                        P ★ webSite: http://www.myrove.cn/
                         P ★ avatar: url
                     div.link-explain
                         P ※ 欢迎大家互换友链,

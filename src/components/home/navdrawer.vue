@@ -23,7 +23,7 @@
               v-icon {{ item.icon }}
             v-list-tile-content
               v-list-tile-title {{ item.span }}
-    p.m-footer &copy; 2018 · yandingblog
+    p.m-footer &copy; 2018 · VUE-ACG-BLOG
 </template>
 
 <script>

@@ -2,7 +2,7 @@
 // const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? 'http://imgs.cdn.yandingblog.cn/blog/' : '/',
+  baseUrl: process.env.NODE_ENV === 'production' ? 'http://imgs.cdn.myrove.cn/blog/' : '/',
   lintOnSave: false,
   productionSourceMap: false
   // configureWebpack:config =>{
