@@ -3,7 +3,7 @@
     div(v-lazy:background-image="background")
     div.error-button
       a(@click="back") 返回上一页
-      router-link(to="/") 返回首页
+      a(href="/") 返回首页
 </template>
 
 <script>

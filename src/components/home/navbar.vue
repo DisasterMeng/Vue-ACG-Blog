@@ -16,9 +16,9 @@
         nav.navRight
           ul.menu
               li(v-for="(item,index) in menu" :key="index")
-                router-link(:to="item.path")
+                a(:href="item.path")
                   v-icon.toolbar-icon {{item.icon}}
-                  span {{item.span}}
+                  span {{ item.span }}
       v-toolbar-items.toolbarRight.pc-items
         v-icon.toolbar-icon(@click="search") youtube_searched_for
         v-icon.toolbar-icon(@click="login") account_circle

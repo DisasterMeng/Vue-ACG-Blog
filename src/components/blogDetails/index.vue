@@ -10,7 +10,7 @@
                   span 本作品采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可。
               section.blog-section
                 div.blog-pre-next(v-for="(item, index) in pre_next_data" :key="index")
-                  router-link(:to="'/blogs/'+ item.id")
+                  a(:href="'/blogs/'+ item.id")
                     img.blog-show(v-lazy="item.summary_img")
                     div.blog-info(:class="index == 0 ? 'blog-info-left':'blog-info-right'")
                       span {{ index == 0 ? 'previous': 'next' }}

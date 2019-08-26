@@ -1,7 +1,7 @@
 <template lang='pug'>
   article.blog-article
     v-flex.blog-picture(xs7 :class="Index % 2 ? 'itemLeft':'itemRight'")
-      router-link(:to="'/blogs/'+ blog.id")
+      a(:href="'/blogs/'+ blog.id")
         img(v-lazy="blog.summary_img")
     v-flex.blog-content-wrap(xs5 :class="Index % 2 ? 'itemRight':'itemLeft'")
       div.blog-content
@@ -9,7 +9,7 @@
           v-icon schedule
           span 发布于{{blog.created | timeformat }}
         div.blog-title
-          router-link(:to="'/blogs/'+ blog.id")
+          a(:href="'/blogs/'+ blog.id")
             span {{blog.title}}
         div.blog-meta
           span
@@ -24,7 +24,7 @@
         div.blog-excerpt
           p {{blog.desc}}
         div.blog-bottom
-          router-link(:to="'/blogs/'+ blog.id")
+          a(:href="'/blogs/'+ blog.id")
             v-icon more_horiz
 </template>
 <script>

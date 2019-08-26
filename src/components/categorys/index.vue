@@ -8,7 +8,7 @@
             span.font-weight-bold(slot="opposite") {{item.time | timeformat}}
             div.py-3
               li.title.categorys-title(v-for="(blog,index) in item.data" :key="index")
-                router-link(:to="'/blogs/'+ blog.id") {{blog.title}}
+                a(:href="'/blogs/'+ blog.id") {{blog.title}}
 </template>
 
 <script>
