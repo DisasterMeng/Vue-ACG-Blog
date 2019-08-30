@@ -27,7 +27,7 @@ export default {
 
 <style lang="stylus" scoped>
   .list
-    margin 0
+    margin-top 25px
     padding 0
   li
     font-size 14px
