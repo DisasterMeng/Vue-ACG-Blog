@@ -21,22 +21,12 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 Vue.use(live2d)
 Vue.use(VueLazyload, {
-  adapter: {
-    loaded (data) {
-      // do something here
-      // example for call LoadedHandler
-      // console.log('loaded')
-      // console.log(data)
-    },
-    loading (listender, Init) {
-      // console.log('load')
-      // console.log(listender)
-      // console.log(Init)
-    },
-    error (listender, Init) {
-      // console.log('err')
-      // console.log(listender)
-      // console.log(Init)
+  filter: {
+    progressive (listener, options) {
+      if (process.env.VUE_APP_CND_IMG_PARAM) {
+        const search = new URL(listener.src).search
+        listener.loading = listener.src + search ? '&' : '?' + process.env.VUE_APP_CND_IMG_PARAM
+      }
     }
   },
   error: require('./assets/imgs/404.png'),

@@ -4184,10 +4184,10 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-live2d-vue@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/live2d-vue/-/live2d-vue-0.2.2.tgz#fdba930460ca834a0ece81e0dd9bc05b00abd501"
-  integrity sha512-N1RF9PFSoD38iZ+ldnAks5yhohwQNimAQ/o9mGI9rk1AEucVn/5Wia6+EegcHggK9Z8xeg2C0glrfG0kXCOv+Q==
+live2d-vue@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/live2d-vue/-/live2d-vue-0.2.3.tgz#e453f981d297ffcc7157347fa75bf22b733fe9e1"
+  integrity sha512-ZTyOuULbEXXfjz2RIyOkfT7QyAbOYb47j8nl+ix4J9iJ+ywEhyWwYusrSWi702QMA1umz8wBET0ienSqHqO9Eg==
   dependencies:
     pug "^2.0.3"
     pug-plain-loader "^1.0.0"
@@ -6605,7 +6605,7 @@ text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-textarea-vue@^0.2.2:
+textarea-vue@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/textarea-vue/-/textarea-vue-0.2.3.tgz#5f89ceef7265f29ab1b75871e87dfb03aa816273"
   integrity sha512-o9ntJbGDKsQWgLlK1W7UDE03DIaKoa9RIhEGPTLef8e+BgBVxMqnleo5quX4ccokTSKKot3k6ZCgvMi65YsTjg==

@@ -8,7 +8,7 @@
                 a(ref="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank")
                   i.fa.fa-creative-commons
                   span 本作品采用知识共享署名-非商业性使用 4.0 国际许可协议进行许可。
-              section.blog-section
+              section.blog-section(v-if="pre_next_data.length!==0")
                 div.blog-pre-next(v-for="(item, index) in pre_next_data" :key="index")
                   a(:href="'/blogs/'+ item.id")
                     img.blog-show(v-lazy="item.summary_img")
