@@ -3,7 +3,7 @@
       p.snow
       p 月影流花花不语，梦入烟水水不兴
       p &copy; 2019 · myrove ·
-        a(href="http://beian.miit.gov.cn/") 粤ICP备19031539号
+        a(href="http://beian.miit.gov.cn/" target='_blank') 粤ICP备19031539号
       p
         span.my-presence (ง •̀_•́)ง
         span {{liveTime}}
