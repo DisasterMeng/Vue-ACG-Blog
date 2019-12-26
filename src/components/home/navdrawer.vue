@@ -18,7 +18,7 @@
       v-text-field(label="search..." append-icon="search" v-model="searchValue" @keyup.enter="search")
     div.m-mune
       v-list.pt-0
-        v-list-tile.m-list-tile(v-for="(item,index) in menu" :key="index" :to="item.path" @click="" ripple)
+        v-list-tile.m-list-tile(v-for="(item,index) in menu" :key="index" :to="item.path" ripple)
             v-list-tile-action
               v-icon {{ item.icon }}
             v-list-tile-content

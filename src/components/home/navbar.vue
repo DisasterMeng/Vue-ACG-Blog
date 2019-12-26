@@ -38,7 +38,7 @@ export default {
       menu: [
         { icon: 'home', span: '首页', path: '/' },
         { icon: 'loyalty', span: '归档', path: '/categorys' },
-        { icon: 'link', span: '友人帐', path: '/friend' },
+        // { icon: 'link', span: '友人帐', path: '/friend' },
         { icon: 'restaurant', span: '投食', path: '/feed' },
         { icon: 'near_me', span: '关于', path: '/about' }
       ]
